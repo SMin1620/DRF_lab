@@ -119,6 +119,15 @@ class User(AbstractBaseUser):
     def get_shrot_name(self):
         return self.username
 
+    def is_staff(self):
+        return self.is_admin
+
+    def has_perm(self, perm, obj=None):
+        return True
+
+    def has_module_perms(self, app_label):
+        return True
+
     @property
     def profile_img_url(self) -> str:
         if self.profile_img:
